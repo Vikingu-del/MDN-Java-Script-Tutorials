@@ -12,7 +12,7 @@ let guessCount = 1;
 let resetButton;
 guessField.focus();
 
-//building functions
+//building functions and calling them
 function checkGuess() {
   const userGuess = Number(guessField.value);
   if (guessCount === 1) {
