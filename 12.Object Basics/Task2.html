@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Object basics: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    let bandInfo;
+
+    // Add your code here
+    const band = {
+        name: "OTR",
+        nationality: "Albania",
+        genre: "HIP-HOP",
+        members: 5,
+        formed: 2008,
+        split: false,
+        albums: 
+        [
+            {
+                name: "Na jena mbreter",
+                released: "2009"
+            }, 
+            {
+                name: "Gangsta Love",
+                released: 2012
+            }, 
+            {
+                name: "On top of the rest",
+                released: 2015
+            }
+        ]
+    }
+
+    bandInfo = `${band.name} is the best ${band.genre} group in ${band.nationality}, still runing in the 2023 since they created on the ${band.formed}. Leader of this Group is Rigels Rajku well known with the nickname "Noizy" and the total number of the members is ${band.members}. Released their first Album ${band.albums[0].name} on ${band.albums[0].released}. There are 2 other albums that are resisting throught ears: ${band.albums[1].name} released on ${band.albums[1].released} & ${band.albums[2].name} released on ${band.albums[2].released}.`;
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+    let para1 = document.createElement('p');
+    para1.textContent = bandInfo;
+    section.appendChild(para1);
+  </script>
+
+</html>
