@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+          color: purple;
+          margin: 0.5em 0;
+        }
+  
+        * {
+          box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="preview">
+
+
+
+    </section>
+    <script>
+        const section = document.querySelector("section");
+
+        class Shape {
+            name;
+            sides;
+            sideLength;
+            constructor(name, sides, sideLength) {
+                this.name = name;
+                this.sides = sides;
+                this.sideLength = sideLength;
+            }
+            calcPerimeter() {
+                const perimeter = this.sides * this.sideLength;
+                const para = document.createElement("p");
+                section.appendChild(para);
+                para.textContent = `The perimeter of ${this.name} is ${perimeter}`
+            }
+        }
+
+        square = new Shape("Square", 4, 5);
+        square.calcPerimeter();
+
+        triangle = new Shape("Triangle", 3, 3);
+        triangle.calcPerimeter();
+
+    </script>
+</body>
+</html>
