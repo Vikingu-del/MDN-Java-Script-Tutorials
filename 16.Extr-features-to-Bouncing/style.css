@@ -24,10 +24,31 @@ h1 {
   text-shadow: 0 0 4px white;
 }
 
-p {
+p{
   position: absolute;
   margin: 0;
-  top: 35px;
+  color: rgb(172, 167, 167, 0.7);
+  text-shadow: 0 0 4px white;
   right: 5px;
-  color: #aaa;
+}
+
+.ball-count {
+  top: 40px;
+  
+}
+
+.player1 {
+  top: 79px;
+}
+
+.player2 {
+  top: 118px
+}
+
+h2 {
+  font-size: 50px;
+  color: white;
+  position: absolute;
+  left: 35%;
+  top: 45%;
 }

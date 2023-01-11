@@ -1,6 +1,13 @@
 // setup canvas
-const para = document.querySelector("p");
+const body = document.querySelector("body");
+const para = document.querySelector(".ball-count");
 let count = 0;
+
+const para1 = document.querySelector(".player1");
+let count1 = 0;
+
+const para2 = document.querySelector(".player2");
+let count2 = 0;
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -110,21 +117,6 @@ class Player extends Shape {
     }
   }
 
-  collisionDetect() {
-    for (const ball of balls) {
-      if (ball.exists) {
-        const dx = this.x - ball.x;
-        const dy = this.y - ball.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-  
-        if (distance < this.size + ball.size) {
-          ball.exists = false;
-          count -= 1;
-          para.textContent = "Ball count: " + count;
-        }
-      }
-    }
-  }
 }
 
 class PlayerOne extends Player {
@@ -152,6 +144,24 @@ class PlayerOne extends Player {
       }
     });
   }
+
+  collisionDetect() {
+    for (const ball of balls) {
+      if (ball.exists) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+  
+        if (distance < this.size + ball.size) {
+          ball.exists = false;
+          count -= 1;
+          count1 += 1;
+          para.textContent = "Ball count: " + count;
+          para1.textContent = "Player 1: " + count1;
+        }
+      }
+    }
+  }
 }
 
 class PlayerTwo extends Player {
@@ -177,6 +187,24 @@ class PlayerTwo extends Player {
           break;
       }
     });
+  }
+
+  collisionDetect() {
+    for (const ball of balls) {
+      if (ball.exists) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+  
+        if (distance < this.size + ball.size) {
+          ball.exists = false;
+          count -= 1;
+          count2 += 1;
+          para.textContent = "Ball count: " + count;
+          para2.textContent = "Player 2: " + count2;
+        }
+      }
+    }
   }
 }
 
@@ -222,8 +250,19 @@ function loop() {
   playerTwo.draw();
   playerTwo.checkBounds();
   playerTwo.collisionDetect();
-
-  requestAnimationFrame(loop);
+  if (count === 0){
+    body.removeChild(canvas);
+    body.removeChild(para);
+    body.removeChild(para1);
+    body.removeChild(para2);
+    const H2 = document.createElement("h2");
+    H2.textContent = count1 < count2 ? "Player 2 won the Game!" : count1 > count2 ? "Player 1 won the Game!" : "Draw Game!";
+    body.appendChild(H2);
+    body.style.backgroundColor = "black"
+    
+  } else {
+    requestAnimationFrame(loop);
+  }
 }
 
 loop();
