@@ -81,27 +81,10 @@ class Ball extends Shape {
   }
 }
 
-class EvileCircle extends Shape {
+class Player extends Shape {
   constructor(x, y){
     super(x, y, 20, 20);
-    this.color = "white";
     this.size = 10;
-    window.addEventListener("keydown", (e) => {
-      switch (e.key) {
-        case "a":
-          this.x -= this.velX;
-          break;
-        case "d":
-          this.x += this.velX;
-          break;
-        case "w":
-          this.y -= this.velY;
-          break;
-        case "s":
-          this.y += this.velY;
-          break;
-      }
-    });
   }
 
   draw() {
@@ -142,7 +125,59 @@ class EvileCircle extends Shape {
       }
     }
   }
-  
+}
+
+class PlayerOne extends Player {
+  constructor(x, y){
+    super(x, y);
+    this.color = "white";
+    window.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "a":
+          this.x -= this.velX;
+          break;
+        
+        case "d":
+          this.x += this.velX;
+          break;
+        
+        case "w":
+          this.y -= this.velY;
+          break;
+        
+        case "s":
+          this.y += this.velY;
+          break;
+        
+      }
+    });
+  }
+}
+
+class PlayerTwo extends Player {
+  constructor(x, y) {
+    super(x, y);
+    this.color = "yellow";
+    window.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "ArrowLeft":
+          this.x -= this.velX;
+          break;
+
+        case "ArrowRight":
+          this.x += this.velX;
+          break;
+
+        case "ArrowUp":
+          this.y -= this.velY;
+          break;
+        
+        case "ArrowDown":
+          this.y += this.velY;
+          break;
+      }
+    });
+  }
 }
 
 // We create this array to populete with created balls till we create 25 balls in the page
@@ -165,7 +200,8 @@ while (balls.length < 25) {
   para.textContent = "Ball count: " + count;
 }
 
-const evilBall = new EvileCircle(random(0, width), (0,height));
+const playerOne = new PlayerOne(random(0, width), (0,height));
+const playerTwo = new PlayerTwo(random(0, width), (0,height));
 
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, .25)";
@@ -179,9 +215,13 @@ function loop() {
     }
   }
   
-  evilBall.draw();
-  evilBall.checkBounds();
-  evilBall.collisionDetect()
+  playerOne.draw();
+  playerOne.checkBounds();
+  playerOne.collisionDetect();
+
+  playerTwo.draw();
+  playerTwo.checkBounds();
+  playerTwo.collisionDetect();
 
   requestAnimationFrame(loop);
 }
