@@ -231,7 +231,7 @@ const playerOne = new PlayerOne(random(0, width), (0, height));
 const playerTwo = new PlayerTwo(random(0, width), (0, height));
 
 function loop() {
-  ctx.fillStyle = "rgba(40, 0, 0, .25)";
+  ctx.fillStyle = "rgba(40, 0, 20, .25)";
   ctx.fillRect(0, 0, width, height);
 
   for (const ball of balls) {
